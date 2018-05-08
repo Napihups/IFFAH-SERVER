@@ -1,0 +1,17 @@
+** accounts **
+----------------------------------
+{
+	"_id" : string auto-generated ,
+	"username": string ,
+	"email" : string ,
+	"password" : string (hash password) ,
+}
+
+
+** profile **
+----------------------------------
+{
+	"_id" : string auto-generated ,
+	"uId" : foreign-key (document - accounts) ,
+	
+}

@@ -7,7 +7,7 @@ const pathModule = require('path');
 const bodyParser = require('body-parser');
 const corsModule = require('cors');
 const mongoose = require('mongoose');
-// const config = require('');
+const config = require('./config/database_config.js');
 
 const PORT = 3310;
 const redis_PORT = 6379;
@@ -17,7 +17,7 @@ const redis_PORT = 6379;
 var x = app.listen(PORT);
 
 /*  init app modules */
-const server = require('./app_modules/server')({
+const server = require('./app_modules/server_module')({
 	app: app,
 	bodyParser: bodyParser,
 	cors: corsModule,
@@ -25,7 +25,13 @@ const server = require('./app_modules/server')({
 	logger: logger,
 	express: express,
 	path: pathModule
-})
+});
+
+const mongo = require('./app_modules/mongoose_module')({
+	mongoose: mongoose,
+	config: config,
+	logger: logger
+});
 
 server.init(function(c) {
 	if(c){
@@ -33,4 +39,6 @@ server.init(function(c) {
 	} else {
 		console.log("Server failed to start up ...")
 	}
-})
+});
+
+mongo.init();

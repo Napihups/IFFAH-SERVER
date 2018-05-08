@@ -8,6 +8,7 @@ module.exports = function(server){
 	var port = server.port;
 	var express = server.express;
 	var path = server.path;
+	const accounts = require('../web_rest/test-mongorest');
 
 
 
@@ -19,7 +20,7 @@ module.exports = function(server){
 		  next();
 		});
 
-		// app.use('/account', account);
+		app.use('/accounts', accounts);
 	}
 
 	function setupMiddleware() {

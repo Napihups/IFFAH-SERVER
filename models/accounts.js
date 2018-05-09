@@ -14,6 +14,9 @@ const accountSchema = mongoose.Schema({
 	password: {
 		type: String,
 		required: true
+	},
+	marital_status: {
+		type: String
 	}
 });
 

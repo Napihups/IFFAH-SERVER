@@ -12,6 +12,66 @@
 ----------------------------------
 {
 	"_id" : string auto-generated ,
-	"uId" : foreign-key (document - accounts) ,
-	
+	"uId" : foreign-key (document - accounts) -> required,
+	"title": string ,
+	"home_address" : {
+		"line_address": string,
+		"country": string
+	},
+	"mobile_number" : string ,
+	"home_number" : string ,
+	"dob": string ,
+	"education" : [education] ,
+	"bio": string,
+	"hobby": [string],
+	"skills": [skill],
+	"employments": [employment]
+
+}
+
+** education **
+----------------------------------
+{
+	"_id" : string auto-generated,
+	"institute": string,
+	"grad_year": string,
+	"course_of_study"
+}
+
+** privacy
+----------------------------------
+{
+	"_id" : string auto-generated,
+	"uid" : string foreign key
+	"fields": [field]
+}
+
+** field
+--------------------------------
+{
+	"_id" : string auto-generated,
+	"field": string ,
+	"desc": string -> will need to develop own code message format
+}
+
+** skill
+--------------------------------
+{
+	"_id" : string auto-generated,
+	"title": string,
+	"desciption": string
+}
+
+** employment
+--------------------------------
+{
+	"_id" : string auto-generated,
+	"company": string,
+	"office_address": string,
+	"designation": string,
+	"gross": string,
+	"yoe": string,
+	"since": string,
+	"resignation": string,
+	"function": string
 }

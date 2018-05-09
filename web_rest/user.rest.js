@@ -31,15 +31,15 @@ router.post('/login', (req, res, next) => {
 
 	accounts.validateAccount(principle, (err, acc) => {
 		if(!acc){
-			res.json({success: false, msg: "Invalid Username"});
+			res.json({success: false, msg: "Invalid username or password "});
 		} else {
 			/** compare credential if its match */
 			accounts.validatePassword(password, acc.password, (err, isMatch) => {
 				if(!isMatch || err){
-					return res.json({success: false, msg: 'Invalid Password'});
+					return res.json({success: false, msg: 'Invalid username or password'});
 				} else {
 					const token = jwt.sign({
-						id : acc._id,
+						uid : acc._id,
 						username : acc.username
 					},
 					config.secret,
@@ -47,8 +47,12 @@ router.post('/login', (req, res, next) => {
 						expiresIn: "5hr"
 					}
 					);
+					let accSession = {
+						uid: acc._id,
+						username: acc.username
+					}
 
-					res.json({success: true, account: acc, token: token});
+					res.json({success: true, acc: accSession, token: token});
 				}
 			});
 		}

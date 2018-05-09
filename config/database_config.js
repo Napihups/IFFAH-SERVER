@@ -1,6 +1,8 @@
 module.exports = {
 	database_uri : 
 	'mongodb+srv://iffah-one:iffah_dev_2018_01@cluster0-comos.mongodb.net/iffahd01',
-	secret : 'sayang_iffah'
+	secret : 'sayang_iffah',
+	database_uri_test : 
+	'mongodb+srv://iffah-one:iffah_dev_2018_01@cluster0-comos.mongodb.net/test',
 
 }

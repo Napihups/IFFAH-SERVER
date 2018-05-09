@@ -9,10 +9,10 @@ module.exports = function(obj) {
 
 	// Init MongoDB Connection
 	let initMongoDB = function() {
-		mongoose.connect(config.database_uri);
+		mongoose.connect(config.database_uri_test);
 
 		mongoose.connection.on('connected', () => {
-			logger.info('Connected to MongoDB ' + config.database_uri);
+			logger.info('Connected to MongoDB ' + config.database_uri_test);
 		});
 
 		mongoose.connection.on('error', (err) => {

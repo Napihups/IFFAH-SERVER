@@ -12,7 +12,10 @@ router.post('/register', (req, res, next) => {
 	let newAcc = new accounts({
 		username : req.body.username,
 		email : req.body.email,
-		password : req.body.password
+		password : req.body.password,
+		marital_status : req.body.marital_status,
+		jduefefe : "kcec efef",
+		cjdcuecehefe: "kdcuec ece"
 	});
 
 	accounts.addNewAccount(newAcc, (err, user) => {

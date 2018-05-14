@@ -75,3 +75,26 @@
 	"resignation": string,
 	"function": string
 }
+
+
+/** -------------------------------------------------------------------------------------------------
+		F-ACCOUNT MODULE DATA MODEL 
+/** -------------------------------------------------------------------------------------------------
+
+** faccount
+---------------------------------
+{
+	"_id" : string auto-generated,
+	"uid" : foreign key (document - accounts),
+	"properties": {
+		"acc_type" : string,
+		"renumeration_amount": string ,
+		"f_acc_setup" : string (msg protocol designed),
+	},
+	"details" : {
+		"current_balance" : string,
+		"acc_logs" : [string]
+		"liabities": [liability],
+		"tickets": [ticket]
+	}
+}

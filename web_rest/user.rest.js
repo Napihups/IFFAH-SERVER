@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database_config.js');
 
 /** Models -----------------------------*/
-const accounts = require('../models/accounts');
+const accounts = require('../models/md_accounts');
 
 
 /** WEB REST ENDPOINT ---------------------------------*/

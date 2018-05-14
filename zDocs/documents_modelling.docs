@@ -1,14 +1,20 @@
-** accounts **
+to avoid confusion, all mongoose documents will use prefix naming convention 
+we will us "md_" as the suffix
+
+** md_accounts **
 ----------------------------------
 {
 	"_id" : string auto-generated ,
 	"username": string ,
 	"email" : string ,
 	"password" : string (hash password) ,
+	"module_states" : {
+		"finance" : flag
+	}
 }
 
 
-** profile **
+** md_profile **
 ----------------------------------
 {
 	"_id" : string auto-generated ,
@@ -29,7 +35,7 @@
 
 }
 
-** education **
+** md_ducation **
 ----------------------------------
 {
 	"_id" : string auto-generated,
@@ -38,7 +44,7 @@
 	"course_of_study"
 }
 
-** privacy
+** md_privacy
 ----------------------------------
 {
 	"_id" : string auto-generated,
@@ -46,7 +52,7 @@
 	"fields": [field]
 }
 
-** field
+** md_field
 --------------------------------
 {
 	"_id" : string auto-generated,
@@ -54,7 +60,7 @@
 	"desc": string -> will need to develop own code message format
 }
 
-** skill
+** md_skill
 --------------------------------
 {
 	"_id" : string auto-generated,
@@ -62,7 +68,7 @@
 	"desciption": string
 }
 
-** employment
+** md_employment
 --------------------------------
 {
 	"_id" : string auto-generated,
@@ -78,10 +84,10 @@
 
 
 /** -------------------------------------------------------------------------------------------------
-		F-ACCOUNT MODULE DATA MODEL 
+		Finance MODULE DATA MODEL 
 /** -------------------------------------------------------------------------------------------------
 
-** faccount
+** md_finances	
 ---------------------------------
 {
 	"_id" : string auto-generated,
@@ -89,7 +95,7 @@
 	"properties": {
 		"acc_type" : string,
 		"renumeration_amount": string ,
-		"f_acc_setup" : string (msg protocol designed),
+		"setup" : string (msg protocol designed),
 	},
 	"details" : {
 		"current_balance" : string,

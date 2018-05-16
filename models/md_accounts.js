@@ -50,6 +50,12 @@ module.exports.addNewAccount = function(newAcc, callback) {
 	});
 }
 
+module.exports.getFinanceModState = function(uid, callback) {
+	const query = {'module_states.finance' : 0};
+	const filterField = {'module_states' : 1};
+	accounts.find(query, filterField, callback);
+}
+
 module.exports.validatePassword = function(rawPassword, hashPassword, callback) {
 		bcrypt.compare(rawPassword, hashPassword, (err, isMatch) =>{
 			if(err) throw err;

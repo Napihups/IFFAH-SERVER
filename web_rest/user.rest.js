@@ -49,7 +49,10 @@ router.post('/login', (req, res, next) => {
 					);
 					let accSession = {
 						uid: acc._id,
-						username: acc.username
+						username: acc.username,
+						module_states : {
+							finance : acc.module_states.finance
+						}
 					}
 
 					res.json({success: true, acc: accSession, token: token});
@@ -58,5 +61,6 @@ router.post('/login', (req, res, next) => {
 		}
 	});
 });
+
 
 module.exports = router;

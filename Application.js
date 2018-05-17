@@ -33,6 +33,11 @@ const mongo = require('./app_modules/mongoose_module')({
 	logger: logger
 });
 
+const socket = require('./app_modules/socket_module')({
+	logger : logger,
+	app : x
+})
+
 server.init(function(c) {
 	if(c){
 		console.log("Server started successfully at port : " + PORT);
@@ -42,3 +47,5 @@ server.init(function(c) {
 });
 
 mongo.init();
+
+socket.startSocket();

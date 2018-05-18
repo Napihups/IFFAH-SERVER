@@ -9,8 +9,8 @@ module.exports = function(server){
 	var express = server.express;
 	var path = server.path;
 	const accounts_rest = require('../web_rest/account.rest');
-	const test = require('../web_rest/test-mongorest');
-	const md_finance = require ('../web_rest/testrest-md_finance');
+	const finance_rest = require ('../web_rest/finance.rest');
+	const test = require('../web_rest/test-mongorest.js');
 
 
 
@@ -24,8 +24,8 @@ module.exports = function(server){
 
 		//ALL REST COMPONENTS //
 		app.use('/account', accounts_rest);
+		app.use('/finance', finance_rest);
 		app.use('/test', test);
-		app.use('/finance', md_finance);
 	}
 
 	function setupMiddleware() {

@@ -4,7 +4,7 @@ const config = require('../config/database_config.js');
 const checkAuth = require('../middleware/check-auth');
 
 /** Mongo Models - related to this Rest*/
-const accounts = require('../models/accounts');
+const accounts = require('../models/md_accounts');
 
 
 /** REST endpoint -------------------------*/

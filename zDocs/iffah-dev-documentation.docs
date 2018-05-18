@@ -1,0 +1,25 @@
+/** Main Documentations for all related modules data 
+
+
+3 MAIN USE CASE-CONTEXT USE-CASE 1.0
+<desc>Use case 1.0 : User who account have yet to setup their finance,
+suppose to display the setup banner upon logged in, and those user who already
+set up, suppose to display the Finance feature as the module already activated
+</desc>
+------------------------------------------
+------------------------------------------
+1.)
+	acc_type : weekly,
+	renum_amount : $550
+	base_currency : SGD
+	day_of_week : Monday
+
+------------------------------------------
+
+2.) acc_type : monthly,
+	renum_amount : $3120,
+	base_currency : SGD,
+	day_of_month : 4
+
+
+

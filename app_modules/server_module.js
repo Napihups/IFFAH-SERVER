@@ -8,7 +8,7 @@ module.exports = function(server){
 	var port = server.port;
 	var express = server.express;
 	var path = server.path;
-	const accounts = require('../web_rest/user.rest');
+	const accounts_rest = require('../web_rest/account.rest');
 	const test = require('../web_rest/test-mongorest');
 	const md_finance = require ('../web_rest/testrest-md_finance');
 
@@ -22,7 +22,8 @@ module.exports = function(server){
 		  next();
 		});
 
-		app.use('/account', accounts);
+		//ALL REST COMPONENTS //
+		app.use('/account', accounts_rest);
 		app.use('/test', test);
 		app.use('/finance', md_finance);
 	}

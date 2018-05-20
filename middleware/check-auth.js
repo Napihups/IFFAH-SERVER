@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database_config.js');
 
 module.exports = (req, res, next) => {
+	console.log("CHeck auth ...")
 	try{
 		const token = req.headers.authorization;
 		const decoded = jwt.verify(token, config.secret);

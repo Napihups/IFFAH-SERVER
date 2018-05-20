@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const checkAuth = require('../middleware/check-auth');
 
 /** Models -----------------------------*/
 const md_finance = require('../models/md_finance');
@@ -7,8 +8,10 @@ const md_finance = require('../models/md_finance');
 
 
 //-------- REST ENDPOINT ------------------------------------//
-router.get('/start', (req, res, next) => {
+router.post('/start', checkAuth, (req, res, next) => {
 	
+
+
 	var financeSetupModel = new md_finance({
 		uid : req.body.uid,
 		properties : {
@@ -21,7 +24,8 @@ router.get('/start', (req, res, next) => {
 			liabilities : [],
 			tickets : []
 		}
-	})
+	});
+
 
 	console.log("Info : FinanceSetupModel is created : " + financeSetupModel);
 	md_finance.startNewFinance(financeSetupModel, (err, object) => {
@@ -39,6 +43,7 @@ router.get('/start', (req, res, next) => {
 /** FOR TESTING PURPOSE ------------------------------------------------*/
 router.post('/new', (req, res, next) => {
 
+	console.log("Test new ");
 	var financeModel = new md_finance({
 		uid : req.body.uid,
 		properties : {

@@ -35,6 +35,11 @@ module.exports = function(obj) {
 	}
 
 
+	module.updateFinanceCreation = function() {
+		
+	}
+
+
 	return module;
 
 }

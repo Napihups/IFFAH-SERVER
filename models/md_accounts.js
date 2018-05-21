@@ -63,3 +63,14 @@ module.exports.validatePassword = function(rawPassword, hashPassword, callback) 
 		});
 }
 
+
+module.exports.validateTakenUsername = function(username, callback) {
+	const query = {'username' : username};
+	accounts.find(query, callback);
+}
+
+
+
+/** ------------- private methods -------------------------*/
+let getAllAccount
+

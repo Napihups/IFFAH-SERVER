@@ -10,6 +10,7 @@ module.exports = function(server){
 	var path = server.path;
 	const accounts_rest = require('../web_rest/account.rest');
 	const finance_rest = require ('../web_rest/finance.rest');
+	const cashInventory_rest = require('../web_rest/cashInventory.rest');
 	const test = require('../web_rest/test-mongorest.js');
 
 
@@ -24,6 +25,7 @@ module.exports = function(server){
 
 		//ALL REST COMPONENTS //
 		app.use('/account', accounts_rest);
+		app.use('/cashInventory', cashInventory_rest);
 		app.use('/finance', finance_rest);
 		app.use('/test', test);
 	}

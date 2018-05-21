@@ -15,14 +15,34 @@ router.post('/register', (req, res, next) => {
 		password : req.body.password
 	});
 
-	accounts.addNewAccount(newAcc, (err, account) =>{
-		if(err){
-			res.json({success: false, msg: err});
+	accounts.validateTakenUsername(req.body.username, (err, result) => {
+		if(!err){
+
+			if(result.length === 0) {
+				accounts.addNewAccount(newAcc, (err, account) =>{
+					if(err){
+						res.json({success: false, msg: err});
+					} else {
+						res.json({success: true, msg: "Success : " + account});
+					}
+				})
+			}
+
+			else if(result.length > 0) {
+				res.json({success:false, msg: "Username is already in use"});
+			}
+
 		} else {
-			res.json({success: true, msg: "Success : " + account});
+			return res.status(401).json({
+			message: err
+			});
 		}
 	})
+
 })
+
+
+/** -------------------------------------------------------------------------------------- */
 
 
 router.post('/login', (req, res, next) => {

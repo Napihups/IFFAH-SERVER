@@ -18,16 +18,29 @@ module.exports = function(obj) {
 			connections.push(clientSocket);
 
 
-			clientSocket.on('ask:finance_states', (uid) => {
+			// clientSocket.on('ask:finance_states', (uid) => {
+			// 	accounts.getFinanceModState(uid, (err, result) => {
+			// 		if(!err) {
+			// 			let fstate = result.module_states.finance;
+			// 			io.emit('give:finance_states', {success: true, payload: fstate});
+			// 		} else {
+			// 			io.emit('give:finance_states', {success: false, payload: err});
+			// 		}
+			// 	})
+			// })
+
+			clientSocket.on('ask:ci_state', (uid) => {
 				accounts.getFinanceModState(uid, (err, result) => {
 					if(!err) {
-						let fstate = result.module_states.finance;
-						io.emit('give:finance_states', {success: true, payload: fstate});
+						let fstate = result.module_states.cashInventory;
+						io.emit('give:ci_state', {success: true, payload: fstate});
 					} else {
-						io.emit('give:finance_states', {success: false, payload: err});
+						io.emit('give:ci_state', {success: false, payload: err});
 					}
 				})
 			})
+
+
 
 
 
@@ -36,7 +49,14 @@ module.exports = function(obj) {
 
 
 	module.updateFinanceCreation = function() {
-		
+		accounts.getFinanceModState(uid, (err, result) => {
+			if(!err) {
+				let fstate = result.module_states.finance;
+				io.emit('give:ci_state', {success: true, payload: fstate});
+			} else {
+				io.emit('give:ci_state', {success: false, payload: err});
+			}
+		})
 	}
 
 

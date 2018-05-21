@@ -17,7 +17,7 @@ const accountSchema = mongoose.Schema({
 		required: true
 	},
 	module_states: {
-		finance : {type: Number, default: 0}
+		cashInventory : {type: Number, default: 0}
 	}
 });
 
@@ -51,7 +51,7 @@ module.exports.addNewAccount = function(newAcc, callback) {
 }
 
 module.exports.getFinanceModState = function(uid, callback) {
-	const query = {'module_states.finance' : 0};
+	const query = {'module_states.cashInventory' : 0};
 	const filterField = {'module_states' : 1};
 	accounts.findOne(query, filterField, callback);
 }
@@ -70,7 +70,10 @@ module.exports.validateTakenUsername = function(username, callback) {
 }
 
 
+module.exports.updateCiModule = function(uid, val, callback) {
 
-/** ------------- private methods -------------------------*/
-let getAllAccount
+	var filter = {uid : uid};
+	var updateQuery = { $set: {"module_states.cashInventory" : val}};
+	accounts.update(filter, updateQuery, callback);
+}
 

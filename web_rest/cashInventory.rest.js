@@ -6,7 +6,7 @@ const tokenUtil = require('../middleware/token-utilities')();
 /** Models -----------------------------*/
 const md_cashInventory = require('../models/md_cashInventory');
 const accounts = require('../models/md_accounts');
-const socket = require('../app_modules/socket_module.js');
+const Context = require('../ApplicationContext');
 
 
 
@@ -26,7 +26,7 @@ router.post('/start', checkAuth, (req, res, next) => {
 			tickets : []
 		}
 	})
-	console.log("Info : cashInventoryModel is created : " + cashInventoryModel);
+	// console.log("Info : cashInventoryModel is created : " + cashInventoryModel);
 	md_cashInventory.startCashInventory(cashInventoryModel, (err, object) => {
 		if(err){
 			res.json({success: false, msg: err});
@@ -34,10 +34,22 @@ router.post('/start', checkAuth, (req, res, next) => {
 			// push notif on cash inventory module activated 
 			// console.log(tokenUtil);
 			let tokenReq = req.headers.authorization;
-			let uid = tokenUtil.getUserIdFromToken(tokenReq);
-			console.log('Test token util : ' + uid);
-			socket.updateFinanceCreation(uid, 1);
-			res.json({success: true, msg: object});
+			const uid = tokenUtil.getUserIdFromToken(tokenReq);
+			console.log(uid);
+			accounts.updateCiModule(uid, 1, (err, object) => {
+				if(!err){
+					console.log(object);
+					Context.socket.notifyCiState(uid);
+					res.json({success: true, msg: 'CI module activated '});
+				} else {
+					res.json({success: false, msg: 'CI module failed to activate : ' + err});
+				}
+			})
+
+		
+
+
+			
 		}
 	})
 

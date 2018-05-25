@@ -7,13 +7,15 @@ module.exports = function(obj) {
 
 	module.getUserIdFromToken = function(token) {
 		const decoded = jwt.verify(token, config.secret);
-		return decoded.id;
+		return decoded.uid;
 	}
 
 	module.getUsernameFromToken = function(token) {
 		const decoded = jwt.verify(token, config.secret);
 		return decoded.username;
 	}
+
+	
 
 	module.getUsernameFromReq = function(req) {
 		const token = req.headers.authorization.split(" ")[1];

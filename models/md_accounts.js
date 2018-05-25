@@ -51,7 +51,7 @@ module.exports.addNewAccount = function(newAcc, callback) {
 }
 
 module.exports.getFinanceModState = function(uid, callback) {
-	const query = {'module_states.cashInventory' : 0};
+	const query = {_id : uid};
 	const filterField = {'module_states' : 1};
 	accounts.findOne(query, filterField, callback);
 }
@@ -72,7 +72,7 @@ module.exports.validateTakenUsername = function(username, callback) {
 
 module.exports.updateCiModule = function(uid, val, callback) {
 
-	var filter = {uid : uid};
+	var filter = {_id : uid};
 	var updateQuery = { $set: {"module_states.cashInventory" : val}};
 	accounts.update(filter, updateQuery, callback);
 }

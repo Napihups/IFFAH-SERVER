@@ -17,6 +17,7 @@ const redis_PORT = 6379;
 var x = app.listen(PORT);
 
 /*  init app modules */
+const Context = require('./ApplicationContext');
 const server = require('./app_modules/server_module')({
 	app: app,
 	bodyParser: bodyParser,
@@ -49,3 +50,5 @@ server.init(function(c) {
 mongo.init();
 
 socket.startSocket();
+
+Context.setSocket(socket);

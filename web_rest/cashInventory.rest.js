@@ -35,10 +35,10 @@ router.post('/start', checkAuth, (req, res, next) => {
 			// console.log(tokenUtil);
 			let tokenReq = req.headers.authorization;
 			const uid = tokenUtil.getUserIdFromToken(tokenReq);
-			console.log(uid);
+			
 			accounts.updateCiModule(uid, 1, (err, object) => {
 				if(!err){
-					console.log(object);
+				
 					Context.socket.notifyCiState(uid);
 					res.json({success: true, msg: 'CI module activated '});
 				} else {
@@ -46,7 +46,7 @@ router.post('/start', checkAuth, (req, res, next) => {
 				}
 			})
 
-		
+
 
 
 			
